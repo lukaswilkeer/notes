@@ -15,5 +15,5 @@ return (async () => {
 
 	const testScenarios = [true, false]
 
-	assertions(testScenarios.map((value) => promise(value).catch(console.error)))
+	assert(testScenarios.map(value => promise(value).catch(console.error)))
 })();
