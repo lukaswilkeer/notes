@@ -1,6 +1,5 @@
 /*
 	The goal here is demonstrate the use of async/await
-	There's a issue on async/await that sometimes doesn't evaluete the catch blocks
 */
 
 const assert = require('assert')
