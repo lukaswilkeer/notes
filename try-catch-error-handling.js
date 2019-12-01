@@ -11,6 +11,7 @@
  *
  * Sidenotes: 
  * 1 - throwAnError is not a functional style function.
+ * 2 - It was used non const variables do achive the demonstration.
  */
 const assert = require('assert')
 
