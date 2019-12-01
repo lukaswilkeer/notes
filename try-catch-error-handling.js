@@ -1,6 +1,7 @@
 /*
  * The goal here is to prove that v2 ins't computed due to a catch error on v1
- * and demonstration how to propertly handle errors on a *functional style
+ * and demonstration how to propertly handle errors (if you need try/catch) on a *functional style
+ * Remember that functional doesn't need try/catch.
  *
  * When an error is throwed inside a try/catch block, the entire code above is
  * ignored due to throw method. This can produce bugs or other botnecks if
