@@ -5,3 +5,4 @@
 * #3 - [Nonblocking Node.js process flow](process-flow.js)
 * #4 - [Async/await](async-await.js)
 * #5 - [Async/await on map function](async-await-map.js)
+* #6 - [Try/catch error handling](try-catch-error-handling.js)
