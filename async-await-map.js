@@ -3,7 +3,7 @@
 	Mapping promises inside a function means that has no need on Promise.all.
 	On other scenario you will need, ex:
 
-	const result = Promise.all(someFunction(someAsyncTask(mappedPromises)))
+	const result = Promise.all(testScenarios.map(value => value.catch(console.error))
 */
 
 const assert = require('assert')
