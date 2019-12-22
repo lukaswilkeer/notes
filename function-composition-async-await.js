@@ -1,7 +1,7 @@
 /*
   The goal here is to prove that function composition doesn't need async/await blocks.
 
-  Errata: on line 32 the goal can't be achived cause assert waits pending promises be resolved.
+  Errata: on line 31 the goal can't be achived cause assert waits pending promises be resolved.
 
   On other side, you can use Promise.all to block the event (promise state) to be resolved, but this is not sementantic enougth,
   so, you use await blocks to handle this and handle erros.
