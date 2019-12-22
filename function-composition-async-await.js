@@ -18,10 +18,10 @@ const axios = require('axios')
 const add1 = (x) => (y) => x+y
 
 const promise = (number) => new Promise((resove, reject) => {
-	return setTimeout(() => number, 3000)
+  return setTimeout(() => number, 3000)
 })
 
-const connect = (result) => setTimeout(() => result, 3000);
+const connect = (result) => setTimeout(() => result, 3000)
 
 const test = (result, toAssert) => {
 	  assert(result, toAssert)

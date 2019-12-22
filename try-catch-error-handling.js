@@ -17,41 +17,41 @@
 const assert = require('assert')
 
 const _testCase = (v1, v2) => {
-	assert.strictEqual(v1 === undefined, true)
-	assert.strictEqual(v2 === undefined, true)
+  assert.strictEqual(v1 === undefined, true)
+  assert.strictEqual(v2 === undefined, true)
 }
 
 const itens = [new Error('Something not cool'), true]
 
 const getItens = (array, index) => {
-	// just for the sake
-	const checkValue = (iten) => {
-		return iten !== -1 && iten !== null && iten !== undefined
-	}
+  // just for the sake
+  const checkValue = (iten) => {
+    return iten !== -1 && iten !== null && iten !== undefined
+  }
 
-	return checkValue(array[index])
-		? array[index]
-		: Error('some error')
+  return checkValue(array[index])
+    ? array[index]
+    : Error('some error')
 }
 
 const throwAnError = (err) => {
-	throw new Error(err)
+  throw new Error(err)
 }
 
 const errorHandler = (value) => {
-	return (value instanceof Error)
-		? throwAnError(value) 
-		: value 
+  return (value instanceof Error)
+    ? throwAnError(value) 
+    : value 
 }
 
 ((arrayOfItens) => {
-	let v1, v2
-	try {
-		v1 = errorHandler(getItens(arrayOfItens, 0))
-		v2 = errorHandler(getItens(arrayOfItens, 1))
-	} catch (err) {
-		console.error(err)
-	}
+  let v1, v2
+  try {
+    v1 = errorHandler(getItens(arrayOfItens, 0))
+    v2 = errorHandler(getItens(arrayOfItens, 1))
+  } catch (err) {
+    console.error(err)
+  }
 
-	return _testCase(v1, v2)
+  return _testCase(v1, v2)
 })(itens)
