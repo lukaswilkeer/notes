@@ -1,6 +1,5 @@
 /*
-	The goal here is to prove that function composition doesn't need
-	async/await blocks.
+  The goal here is to prove that function composition doesn't need async/await blocks.
 
   Errata: on line 32 the goal can't be achived cause assert waits pending promises be resolved.
 
