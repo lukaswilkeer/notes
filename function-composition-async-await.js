@@ -6,8 +6,8 @@
   On other side, you can use Promise.all to block the event (promise state) to be resolved, but this is not sementantic enougth,
   so, you use await blocks to handle this and handle erros.
 
-  Don't forget to remember that is a composition, your data structure could/should mutate, so you can handle the error on a specific manner
-  that don't trow awayt the entire composition and completes the stack with the error result.
+  Don't forget to remember that is a composition, your data structure could/should mutate, so you should handle  errors on a specific manner
+  that don't trow away the entire composition and completes the stack with the error result.
 
   This is easy, but not mentioned anywhere.
 */
