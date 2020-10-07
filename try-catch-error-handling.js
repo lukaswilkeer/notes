@@ -25,7 +25,6 @@ const _testCase = (v1, v2) => {
 const itens = [new Error('Something not cool'), true]
 
 const getItens = (array, index) => {
-     console.log(array[index])
     // just for the sake
     const checkIndex = (iten) => {
         return iten !== -1 && iten !== null && iten !== undefined
