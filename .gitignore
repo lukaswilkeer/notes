@@ -1,2 +1,3 @@
 .editorconfig
+*.swp
 /node_modules
