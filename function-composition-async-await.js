@@ -1,10 +1,5 @@
 /*
-  The goal here is to prove that function composition doesn't need async/await blocks.
-
-  Errata: on line 31 the goal can't be achived cause assert waits pending promises be resolved.
-
-  On other side, you can use Promise.all to block the event (promise state) to be resolved, but this is not sementantic enougth,
-  so, you use await blocks to handle this and handle erros.
+  The goal here is to demonstrate de use o assync operatios  on  a composition.
 
   Don't forget to remember that is a composition, your data structure could/should mutate, so you should handle  errors on a specific manner
   that don't trow away the entire composition and completes the stack with the error result.
@@ -27,6 +22,8 @@ const test = (result, toAssert) => {
 	  assert(result, toAssert)
 }
 
+const promiseWait = async () => await promsie(1)
+
 test(1, connect(1))
-test(2, add1(promise(1), 1))
+test(2, add1(promiseWaiti(), 1))
 // test('array', typeof filter(request))

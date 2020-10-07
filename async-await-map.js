@@ -1,9 +1,5 @@
 /*
 	The goal here is demonstrate the use of async/await on map operations.
-	Mapping promises inside a function means that has no need on Promise.all.
-	On other scenario you will need, ex:
-
-	const result = Promise.all(testScenarios.map(value => value.catch(console.error))
 */
 
 const assert = require('assert')
@@ -19,5 +15,7 @@ return (async () => {
 
 	const testScenarios = [promise(true), promise(false)]
 
-	assert(testScenarios.map(value => value.catch(console.error)))
+	const result = await Promise.allSettled(testScenarios.map(value => value.catch(console.error)))
+
+	assertions(result)
 })();

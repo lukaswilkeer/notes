@@ -17,19 +17,21 @@
 const assert = require('assert')
 
 const _testCase = (v1, v2) => {
-    assert.strictEqual(v1 === undefined, true)
-    assert.strictEqual(v2 === undefined, true)
+    console.log(v2)
+    assert.strictEqual(v1, undefined)
+    assert.strictEqual(v2, undefined)
 }
 
 const itens = [new Error('Something not cool'), true]
 
 const getItens = (array, index) => {
+     console.log(array[index])
     // just for the sake
-    const checkValue = (iten) => {
+    const checkIndex = (iten) => {
         return iten !== -1 && iten !== null && iten !== undefined
     }
 
-    return checkValue(array[index])
+    return checkIndex(array[index])
         ? array[index]
         : Error('some error')
 }
@@ -39,6 +41,7 @@ const throwAnError = (err) => {
 }
 
 const errorHandler = (value) => {
+    console.log('value', value)
     return (value instanceof Error)
         ? throwAnError(value) 
         : value 
@@ -49,6 +52,7 @@ const errorHandler = (value) => {
     try {
         v1 = errorHandler(getItens(arrayOfItens, 0))
         v2 = errorHandler(getItens(arrayOfItens, 1))
+	console.log(v2)
     } catch (err) {
         console.error(err)
     }
