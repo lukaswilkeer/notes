@@ -6,3 +6,4 @@
 * #4 - [Async/await](async-await.js)
 * #5 - [Async/await on a map function](async-await-map.js)
 * #6 - [Try/catch error handling](try-catch-error-handling.js)
+* #7 - [Promise list fetch handle withtou allSettled](promise-rejection.js)
