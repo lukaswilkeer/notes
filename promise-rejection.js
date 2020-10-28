@@ -32,9 +32,7 @@ const mapPromises = async (promises, index = 0) => {
   const result = await promises[index].then(getResult).catch((err) => null)
   results.push(result)
 
-  return index < promises.length - 1
-     ? mapPromises(promises, ++index)
-     : results
+  return index < promises.length - 1 ? mapPromises(promises, ++index) : results
 }
 
 (async (arrayOfPromises) => {
