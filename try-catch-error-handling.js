@@ -17,7 +17,7 @@
 const assert = require('assert')
 
 const _testCase = (v1, v2) => {
-    console.log(v2)
+    console.log('v2', v2)
     assert.strictEqual(v1, undefined)
     assert.strictEqual(v2, undefined)
 }
@@ -51,7 +51,6 @@ const errorHandler = (value) => {
     try {
         v1 = errorHandler(getItens(arrayOfItens, 0))
         v2 = errorHandler(getItens(arrayOfItens, 1))
-	console.log(v2)
     } catch (err) {
         console.error(err)
     }
