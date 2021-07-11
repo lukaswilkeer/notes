@@ -39,10 +39,7 @@ async function processQueue (promise) {
         promiseListResult.push(result);
     }
 
-    const haveSomePromiseFailed = promiseListResult.filter(value => {
-        console.log(value)
-        value == null
-    }).length > 0
+    const haveSomePromiseFailed = promiseListResult.filter((value) => value == null).length > 0
 
     assert(haveSomePromiseFailed, true)  
 })(urls)
