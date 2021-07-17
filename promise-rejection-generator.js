@@ -35,7 +35,7 @@ async function processQueue (promise) {
     }
     
     for await (const promise of promiseQueue) {
-        let result = await promise.value;
+        let result = promise.value;
         promiseListResult.push(result);
     }
 
