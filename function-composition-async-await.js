@@ -5,7 +5,6 @@
 */
 
 const assert = require('assert')
-const axios = require('axios')
 
 const transform = async (...args) => {
   this.finalResult = []
@@ -40,7 +39,7 @@ const transform = async (...args) => {
 const add1 = (x) => (y) => x+y
   
 const promise = (number) => new Promise((resove, reject) => {
-    return setTimeout(() => number, 3000)
+  return setTimeout(() => number, 3000)
 })
 
 const connect = async (result) => new Promise((resolve, reject) => setTimeout(() => resolve(result), 3000));
