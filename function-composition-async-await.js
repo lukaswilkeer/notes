@@ -11,7 +11,6 @@ const transform = async (...args) => {
   this.finalResult = []
   this.intermediateResult = null;
 
-  //let self = this;
   try {
     if (typeof args[args.length] == 'number') {
       this.index = args.length
