@@ -42,8 +42,6 @@ const promise = (number) => new Promise((resove, reject) => {
   return setTimeout(() => number, 3000)
 })
 
-const connect = async (result) => new Promise((resolve, reject) => setTimeout(() => resolve(result), 3000));
-
 const test = (result, toAssert) => {
 	assert(result, toAssert)
 }
