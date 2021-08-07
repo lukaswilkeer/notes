@@ -46,6 +46,8 @@ const test = (result, toAssert) => {
 	assert(result, toAssert)
 }
 
+const connect = async (result) => new Promise((resolve, reject) => setTimeout(() => resolve(result), 300))
+
 const promiseWait = async () => await promise(1)
 
 test(1, transform(connect(1)))
