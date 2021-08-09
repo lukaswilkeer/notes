@@ -21,5 +21,5 @@ const client = new MongoClient(mongoURI);
     while (items.next()) console.log(items);
 
     // iterating syncronouslly using callbacks
-    await Promise.all(items.forEach((items) => console.log(items)));
+    await items.forEach((items) => console.log(items));
 })();
