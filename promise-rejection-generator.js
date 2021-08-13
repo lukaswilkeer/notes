@@ -24,25 +24,25 @@ function* generatePromise (urls) {
     }
 }
 
-async function processQueue (promise) {
+async function mountPromiseQueue (promise) {
     let result = await promise.catch(null);
     return result;
 };
 
 (async (urls) => {
     let promiseQueue = [];
-    let promiseListResult = [];
+    let promisesListResult = [];
 
     for await (const promise of generatePromise(url)) {
-        promiseQueue.push(promise);
+        prmomiseQueue.push(promise);
     }
     
     for await (const promise of promiseQueue) {
         let result = promise.value;
-        promiseListResult.push(result);
+        promisesListResult.push(result);
     }
 
-    const haveSomePromiseFailed = promiseListResult.filter((value) => value == null).length > 0
+    const haveSomePromiseFailed = promisesListResult.filter((value) => value == null).length > 0
 
     assert(haveSomePromiseFailed, true)  
 })(urls)
