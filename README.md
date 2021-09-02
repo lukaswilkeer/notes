@@ -1,6 +1,6 @@
 # :notebook: Notes
 
-* #1 - [Mongo Cursor](notes/mongo-cursor.md)
+* #1 - [Mongo Cursor](notes/mongo-cursor.js)
 * #2 - [Nonblocking Node.js process flow](process-flow.js)
 * #3 - [Async/await](async-await.js)
 * #4 - [Async/await on a map function](async-await-map.js)
