@@ -18,7 +18,7 @@ const client = new MongoClient(mongoURI);
     for (const item of items) console.log(item)
 
     // iterating assyncronouslly without exausting the cursor
-    while (items.next()) console.log(items);
+    while (items.hasNext()) console.log(items);
 
     // iterating syncronouslly using callbacks
     await items.forEach((items) => console.log(items));
