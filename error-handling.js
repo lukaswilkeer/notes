@@ -9,7 +9,7 @@
  * See the try-catch-error-handling.js for more information.
  *
  * Sidenotes:
- * 1 - Loggins things is a side-effect, by correctnes, we needed to avoid this.
+ * 1 - Loggins things is a side-effect, by correctnes, we needed to isolate this.
 */
 
 const assert = require('assert')
@@ -23,8 +23,11 @@ const errorHandler = (arg) => {
         return arg
     } else {
         const err = new Error('Not a number')
-        // log into the system, 
-        console.error(err)
+        // log into the system,
+        try {
+            console.error(err)
+        // eslint-disable-next-line no-empty
+        } catch (err) {}
     }
 }
 
