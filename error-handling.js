@@ -4,44 +4,47 @@
  * To achive this goal we use an interface (how demonstrated in haskell) on a pipeline,
  * if an error ocurr, it gets logged into the system¹, if not, the program continues it's executations.
  * 
- * Because of the map and return format², we can avoid returning undefined to the program.
+ * Because of mapM_ we can constrol this situation.
  * 
  * See the try-catch-error-handling.js for more information.
  *
  * Sidenotes:
- * 1 - Loggins thigs is a side-effect, by correctnes, we needed to avoid this.
- * 2 - For semantics, use teneraty if.
+ * 1 - Loggins things is a side-effect, by correctnes, we needed to avoid this.
 */
 
 const assert = require('assert')
 
-const numbers = [0, undefined, 42]
+// mapM_
+const mapM_ = (fa, fb) => fa(fb())
 
-const errorHandler = (argument) => {
-    return argument instanceof Error ? console.error(argument) : argument
+// to use the tenary if whe need a pipe and tap 
+const errorHandler = (arg) => {
+    if (!(arg instanceof Error) && !(isNaN(arg))) {
+        return arg
+    } else {
+        const err = new Error('Not a number')
+        // log into the system, 
+        console.error(err)
+    }
 }
 
-// util to create pure arguments 
-const pure = (arg) => () => arg
+// util function to create pure arguments 
+const pureNumber = (arg) => () => typeof arg == 'number' && !(isNaN(arg)) ? arg : undefined
 
-// this interface provide us a way to interact with the system, in this case, the v8,
+// sum function
+const sum = (n) => n + 1
+
+// this interface provide us a way to interact with the system, in this case,
 // and work without crashign the entire system.
-const performCalculationApplicative = function () {}
+const performCalcApplicative = (sum, number) => () => sum(number());
 
-performCalculationApplicative.prototype.calc = function (number, errorHandler) {
-    const result = number() + 1
+(() => { 
+    // Monad m => (a -> m b) -> t a -> m (t b) 
+    const a1 = mapM_(errorHandler, performCalcApplicative(sum, pureNumber(1)))
+    const a2 = mapM_(errorHandler, performCalcApplicative(sum, pureNumber(43)))
+    const a3 = mapM_(errorHandler, performCalcApplicative(sum, pureNumber(undefined)))
 
-    return typeof result === 'number' && isNaN(result) === false 
-        ? result
-        : errorHandler(Error('Not a number'))
-}; 
-
-(() => {
-    const performCalc = new performCalculationApplicative()
-
-    const result = numbers 
-        .map(number => performCalc.calc(pure(number), errorHandler))
-        .map(number => performCalc.calc(pure(number), errorHandler))
-
-    assert.deepStrictEqual(result, [2, undefined, 44])
+    assert.strictEqual(a1, 2)
+    assert.strictEqual(a2, 44)
+    assert.strictEqual(a3, undefined)
 })()
