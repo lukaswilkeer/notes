@@ -8,5 +8,5 @@
 * #6 - [Promise list fetch handle without allSettled](promise-rejection.js)
 * #7 - [Promise list fecth using generators](promise-rejection-generator.js)
 * #8 - [Error handling without crashing the system](error-handling.js)
-* #9 - [Imperative error handling without crashing the system](error-handling.js)
+* #9 - [Imperative error handling without crashing the system](imperative-try-catch-error-handling.js)
 * #10 - [Function composition with async functions](function-composition-async-await.js)
