@@ -10,33 +10,44 @@
 * By system we talk about the enviroment what the code runs, on this case an front-end back-end talk
 * trough an REST API.
 *
-* By crashing we means the front-end doing things that is unecessary, or thisplayng things that casues
+* By crashing we means the front-end doing things that is unecessary, or this playing things that casues
 * an "error 500 guru meditation". 
 *
 * About the fact that MVC is a OOP approach, the MVC pattern can be applied to a
-* imperative system since that the code on a imperative style. Om this note we achieve this goal
-* by using it of a way of sepere concerns, tha names is very conveniet and the fact that almost
+* imperative system since that the code is on a imperative style. Om this note we achieve this goal
+* by using it of a way of separe concerns, tha names is very conveniet and almost
 * everyone knows this pattern.
 *
-* To achieve the goal, we use nested try/catch blocks.
+* To achieve the goal, we use nested try/catch blocks, where the first represets the controller layer
+* and the last represets call made by the model separated by functions².
 *
 * Sidenotes
 * 1 - On an human readable way, therefore an API is a interface to the frontend.
+* 2 - TransformToAnError should be the default treatement for every db request to go against the 
+* thurth table.
 */
+
+const thruthTable = {
+    'E11000': { status: 500, message: 'Duplicate item' }
+}
 
 const responseSend = (status, message) => {
     console.log(message)
 }
 
+
+const transformToAnError = (err) => {
+    const errorMessage = err.split(':')
+    return { code: errorMessage[0], message: errorMessage[1] }
+}
+
 const errorHandler = (err) => {
-    const thruthTable = {
-        'E11000': { status: 500, message: 'Duplicate item' }
-    }
+    const error = transformToAnError(err)
     
-    // on getStatus on can code an defaul baheavior, so, the thurth table.
-    const getCode = (string) => string.split(':')[0]
-    
-    return { statusCode: thruthTable[getCode(err.message)].status, message: thruthTable[getCode(err.message)].message }
+    // on err.status you can code the default error status code by working with generators and classes,
+    // or a pure implementation of function generator backed by a proxy, or a more complex version of
+    // function generators.
+    return { statusCode: thruthTable[err.code].status, message: thruthTable[err.message].message }
 }
 
 // db.collection(name).find(params)
@@ -51,7 +62,7 @@ const model = (id) => {
     try {
         return db.find({_id: id}, { $limit: 1 })
     } catch (err) {
-        throw err
+        throw transformToAnError(err)
     }
 }
 
